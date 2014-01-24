@@ -1,0 +1,29 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:tools="http://schemas.android.com/tools"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	android:background="@color/background_green"
+	tools:context=".MainActivity" >
+    
+    <TextView android:id="@+id/textView_welcome"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:background="@drawable/endzone"
+		android:gravity="center_horizontal"
+		android:paddingBottom="6dp"
+		android:paddingTop="6dp"
+		android:text="@string/welcome"
+		android:textSize="52sp"
+		style="@style/green_text" />
+    
+    <ScrollView android:id="@+id/scrollView_form"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/textView_welcome" >
+        
+        <android.support.v4.view.ViewPager android:id="@+id/viewPager_form"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+    </ScrollView>
+</RelativeLayout>
