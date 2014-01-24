@@ -7,12 +7,14 @@ import java.util.Vector;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
-import android.support.v4.view.PagerAdapter;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 //import android.text.Editable;
 //import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
@@ -22,20 +24,36 @@ import android.graphics.Typeface;
 
 /** 
  * @author Kenneth Bogner
+ * @version 1.0
  * */
 public class MainActivity extends FragmentActivity {
 
-	//private EditText mNameEditText;
+	private static final String TAG = "d1scout";
+	private static final int PAGES = 3;
+	
+	private D1ScoutAdapter mAdapter;
 	private ViewPager mViewPager;
-	private PagerAdapter mPagerAdapter;
+	private int currentPage;
 	//private ArrayList<String> mPrompts;
-	private static final String TAG = "scouting.report";
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 		
+		currentPage = 0;
+		
+		mAdapter = new D1ScoutAdapter(getSupportFragmentManager());
+		mViewPager = (ViewPager) findViewById(R.id.viewPager_form);
+		mViewPager.setAdapter(mAdapter);
+		
+		Button button = (Button) findViewById(R.id.next);
+		 button.setOnClickListener(new OnClickListener() {
+			public void onClick(View v) {
+				mViewPager.setCurrentItem(currentPage + 1);
+			}
+		}); 
+		 
 		/*Log.d(TAG,"Before retrieving fragments for mPrompts");
 		List<Fragment> fragments = getSupportFragmentManager().getFragments();
 		mPrompts = new ArrayList<String>();
@@ -48,9 +66,37 @@ public class MainActivity extends FragmentActivity {
 		Log.d(TAG,"After mPrompts has each fragment name");
 		*/
 		
-		initializeViewPager();
+		//initializeViewPager();
 		
 		setTypefaces((ViewGroup) findViewById(R.id.scrollView_form).getRootView());
+	}
+	
+	public static class D1ScoutAdapter extends FragmentPagerAdapter {
+		public D1ScoutAdapter(FragmentManager fragmentManager) {
+			super(fragmentManager);
+		}
+
+		@Override
+		public Fragment getItem(int position) {
+			switch (position) {
+			case 0:
+				//return D1ScoutFragment().init(position);
+				return new Fragment();
+			case 1:
+				//return D1ScoutFragment().init(position);
+				return new Fragment();
+			case 2:
+				//return D1ScoutFragment().init(position);
+				return new Fragment();
+			default:
+				return new Fragment();
+			}
+		}
+
+		@Override
+		public int getCount() {
+			return PAGES;
+		}
 	}
 	
 	private void initializeViewPager() {
@@ -66,11 +112,11 @@ public class MainActivity extends FragmentActivity {
 		fragments.add(Fragment.instantiate(this, NameFragment.class.getName()));
 		fragments.add(Fragment.instantiate(this, HeightFragment.class.getName()));
 		
-		Log.d(TAG,"Begin ViewPager and PagerAdapter initializing");
-		mPagerAdapter = new ScoutingReportPagerAdapter(getSupportFragmentManager(), fragments);
-		mViewPager = (ViewPager) findViewById(R.id.viewPager_form);
-		mViewPager.setAdapter(mPagerAdapter);
-		Log.d(TAG,"initializeViewPager done");
+		//Log.d(TAG,"Begin ViewPager and PagerAdapter initializing");
+		//mPagerAdapter = new ScoutingReportPagerAdapter(getSupportFragmentManager(), fragments);
+		//mViewPager = (ViewPager) findViewById(R.id.viewPager_form);
+		//mViewPager.setAdapter(mPagerAdapter);
+		//Log.d(TAG,"initializeViewPager done");
 	}
 
 	/*private void setEditTextListener() {
