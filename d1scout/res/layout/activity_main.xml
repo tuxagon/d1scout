@@ -1,38 +1,88 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-	xmlns:tools="http://schemas.android.com/tools"
-	android:layout_width="match_parent"
-	android:layout_height="match_parent"
-	android:background="@color/background_green"
-	tools:context=".MainActivity" >
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
     
-    <TextView android:id="@+id/textView_welcome"
-		android:layout_width="match_parent"
-		android:layout_height="wrap_content"
-		android:background="@drawable/endzone"
-		android:gravity="center_horizontal"
-		android:paddingBottom="6dp"
-		android:paddingTop="6dp"
-		android:text="@string/welcome"
-		android:textSize="52sp"
-		style="@style/green_text" />
-    
-    <ScrollView android:id="@+id/scrollView_form"
+    <TextView
+        android:id="@+id/textViewTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/textView_welcome" >
+        android:layout_marginLeft="25dp"
+        android:layout_marginRight="25dp"
+        android:layout_marginTop="30dp"
+        android:gravity="center_horizontal"
+        android:text="D1 Scout (Alpha Version)"
+        android:textSize="24sp" />
+    
+    <TextView android:id="@+id/textViewHeight"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/textViewTitle"
+        android:layout_marginLeft="25dp"
+        android:layout_marginRight="25dp"
+        android:layout_marginTop="30dp"
+        android:gravity="center_horizontal"
+        android:text="Enter your height" />
+    
+    <LinearLayout android:id="@+id/linearLayoutHeight" 
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_below="@id/textViewHeight"
+        android:gravity="center_horizontal" >
+
+        <EditText
+            android:id="@+id/editTextHeightFeet"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="25dp"
+            android:layout_marginRight="15dp"
+            android:ems="5"
+            android:gravity="center_vertical|center_horizontal"
+            android:hint="feet"
+            android:inputType="number" />
+    
+   	 	<EditText
+   	 	    android:id="@+id/editTextHeightInches"
+   	 	    android:layout_width="wrap_content"
+   	 	    android:layout_height="wrap_content"
+   	 	    android:layout_marginLeft="25dp"
+   	 	    android:layout_marginRight="15dp"
+   	 	    android:ems="5"
+   	 	    android:gravity="center_vertical|center_horizontal"
+   	 	    android:hint="inches"
+   	 	    android:inputType="number" />
         
-        <android.support.v4.view.ViewPager android:id="@+id/viewPager_form"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-
-    </ScrollView>
-
-    <Button
-        android:id="@+id/next"
+    </LinearLayout>
+    
+    <TextView android:id="@+id/textViewWeight"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/linearLayoutHeight" 
+        android:layout_marginLeft="25dp"
+        android:layout_marginRight="25dp"
+        android:layout_marginTop="30dp"
+        android:gravity="center_horizontal"
+        android:text="Enter your weight" />
+    
+    <EditText
+        android:id="@+id/editTextWeight"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_below="@id/textViewWeight"
+        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="25dp"
+        android:layout_marginRight="15dp"
+        android:ems="5"
+        android:gravity="center_vertical|center_horizontal"
+        android:hint="pounds"
+        android:inputType="number" />
+    
+    <Button android:id="@+id/buttonContinue"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_alignParentRight="true"
-        android:text="Next" />
-
+        android:layout_alignParentLeft="true"
+        android:text="Continue" />
+ 
 </RelativeLayout>
